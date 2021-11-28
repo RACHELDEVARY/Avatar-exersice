@@ -1,18 +1,30 @@
 import React from 'react'
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
+import { UserItem } from './UserItem'; 
+import { makeStyles } from '@material-ui/core/styles';
 
 
-export const ListOfUser=()=>{
+const useStyles = makeStyles((theme) => ({
+    root: {
+      width: '100%',
+      maxWidth: '36ch',
+      backgroundColor: theme.palette.background.paper,
+    },
+    inline: {
+      display: 'inline',
+    },
+  }));
 
-let userArray=[]
-
-
+export const ListOfUser=({userArray})=>{
+   console.log("in list userArray",userArray)
+  const classes = useStyles();  
     return(
-        <div>
-<List>
-    <ListItem>gjhxhfhg</ListItem>
+        <List className={classes.root}>
+{userArray.length>0 && userArray.map(contact=>
+    <UserItem contact={contact}/>
+)}
+
 </List>
-</div>
     )
 }
