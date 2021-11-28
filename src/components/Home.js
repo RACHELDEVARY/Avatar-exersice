@@ -31,8 +31,14 @@ export const Home = () => {
     newUser = await generateUserRequest(str);
     console.log("newUser", newUser)
     setUserArray(oldArray => [...oldArray, newUser])
-    localStorage.setItem("userArray",userArray)
+    console.log("userArray",userArray)
+    
   }
+
+  useEffect(()=>{
+    if(localStorage.getItem("userArray"))
+    setUserArray(JSON.parse(localStorage.getItem("userArray")))
+  },[])
 
   return (
     <Layout>

@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const ListOfUser=({userArray})=>{
    console.log("in list userArray",userArray)
+   localStorage.setItem("userArray",JSON.stringify(userArray))
   const classes = useStyles();  
     return(
         <List className={classes.root}>
