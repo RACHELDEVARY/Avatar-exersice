@@ -31,7 +31,7 @@ export const Home = () => {
     newUser = await generateUserRequest(str);
     console.log("newUser", newUser)
     setUserArray(oldArray => [...oldArray, newUser])
-    console.log("userArray", userArray)
+    localStorage.setItem("userArray",userArray)
   }
 
   return (
