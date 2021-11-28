@@ -9,7 +9,7 @@ export const DraftUser=()=>{
 return(
     <div style={{display:"flex",opacity:0.5}}>
         <TextField  value={userDetails} placeholder="Draft User"/>
-        <Avatar src={`https://avatars.dicebear.com/api/female/${userDetails}.svg`}  />
+        <Avatar src={userDetails?`https://avatars.dicebear.com/api/female/${userDetails}.svg`:"/broken-image.jpg"}  />
     </div>
 )
 }
