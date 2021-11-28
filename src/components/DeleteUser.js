@@ -9,36 +9,36 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import ListItem from '@material-ui/core/ListItem';
-import {useState} from 'react'
+import { useState } from 'react'
 
 
-export const DeleteUser=({isOpen,setIsOpen,email,firstName,lastName,userName})=>{
-  
-    
-return(
-       <Dialog open={isOpen} 
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-       <DialogTitle id="alert-dialog-title">{"Do you want to delete this user?"}</DialogTitle> 
-       <DialogContent>
-           <ListItemAvatar>
+export const DeleteUser = ({ isOpen, setIsOpen, email, firstName, lastName, userName }) => {
+
+
+  return (
+    <Dialog open={isOpen}
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"
+    >
+      <DialogTitle id="alert-dialog-title">{"Do you want to delete this user?"}</DialogTitle>
+      <DialogContent>
+        <ListItemAvatar>
           <Avatar alt="user image" src={`https://avatars.dicebear.com/api/female/${userName}.svg`} />
         </ListItemAvatar>
-                <p>{userName}</p>
-                <p >name: {firstName} {lastName} </p>
-                <p>email: {email}</p>  
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={()=>{setIsOpen(false)}} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={()=>{setIsOpen(false)}} color="primary" autoFocus>
-            Delete
-          </Button>
-        </DialogActions>  
-      </Dialog>
-)
+        <p>{userName}</p>
+        <p >name: {firstName} {lastName} </p>
+        <p>email: {email}</p>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={() => { setIsOpen(false) }} color="primary">
+          Cancel
+        </Button>
+        <Button onClick={() => { setIsOpen(false) }} color="primary" autoFocus>
+          Delete
+        </Button>
+      </DialogActions>
+    </Dialog>
+  )
 
 }
 

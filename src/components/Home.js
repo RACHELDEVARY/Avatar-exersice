@@ -27,18 +27,18 @@ export const Home = () => {
   const [userArray, setUserArray] = useState([])
   let newUser;
 
-  const generateUser = async() => {
+  const generateUser = async () => {
     newUser = await generateUserRequest(str);
     console.log("newUser", newUser)
     setUserArray(oldArray => [...oldArray, newUser])
-    console.log("userArray",userArray)
-    
+    console.log("userArray", userArray)
+
   }
 
-  useEffect(()=>{
-    if(localStorage.getItem("userArray"))
-    setUserArray(JSON.parse(localStorage.getItem("userArray")))
-  },[])
+  useEffect(() => {
+    if (localStorage.getItem("userArray"))
+      setUserArray(JSON.parse(localStorage.getItem("userArray")))
+  }, [])
 
   return (
     <Layout>
@@ -67,8 +67,8 @@ export const Home = () => {
             <Menu.Item key="2">{flag ? < Avatar shape="circle" visible="true" size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }}
               src={str ? `https://avatars.dicebear.com/api/female/${str}.svg` : "/broken-image.jpg"} /> : <Spin indicator={antIcon} />} </Menu.Item>
 
-            <Menu.Item key="3"><Button color="primary" variant="contained" onClick={()=>{generateUser()}}
-            
+            <Menu.Item key="3"><Button color="primary" variant="contained" onClick={() => { generateUser() }}
+
               disabled={flag == 0 || str == null || str == ""} >create user</Button>
             </Menu.Item>
           </Menu>
@@ -85,7 +85,7 @@ export const Home = () => {
           }}
         >
           {(!flag || str) && < DraftUser />}
-          {userArray.length>0 && <ListOfUser userArray={userArray} />}
+          {userArray.length > 0 && <ListOfUser userArray={userArray} />}
         </Content>
         {/* </Layout> */}
       </Layout>
