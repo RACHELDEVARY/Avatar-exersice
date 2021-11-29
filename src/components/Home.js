@@ -36,11 +36,11 @@ export const Home = () => {
   }
 
   useEffect(() => {
-    if (localStorage.getItem("userArray"))
-      setUserArray(JSON.parse(localStorage.getItem("userArray")))
+    if (sessionStorage.getItem("userArray"))
+      setUserArray(JSON.parse(sessionStorage.getItem("userArray")))
   }, [])
-
-  return (
+  
+   return (
     <Layout>
       <Header className="header">
         <h1>Generated Contacts:{userArray.length}</h1>

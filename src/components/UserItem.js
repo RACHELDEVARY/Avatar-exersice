@@ -29,7 +29,7 @@ export const UserItem = ({ contact }) => {
           </React.Fragment>
         }
       />
-      {isOpen && <DeleteUser isOpen={isOpen} setIsOpen={setIsOpen} email={email} firstName={firstName} lastName={lastName} userName={userName} />}
+      {isOpen && <DeleteUser setIsOpen={setIsOpen} email={email} firstName={firstName} lastName={lastName} userName={userName} />}
     </ListItem>
 
 
