@@ -1,21 +1,33 @@
 
+.container{
+height: 100vh;
 
-.flexContainer{
-display:flex
+
 }
-#components-layout-demo-top-side .logo {
-  float: left;
-  width: 120px;
-  height: 31px;
-  margin: 16px 24px 16px 0;
-  background: rgba(255, 255, 255, 0.3);
+.header{
+  border: 1px solid black;
 }
 
-.ant-row-rtl #components-layout-demo-top-side .logo {
-  float: right;
-  margin: 16px 0 16px 24px;
+.mainContent{
+display: flex;
+}
+.sidebar{
+  padding-top: 10P;
+  width: 25%;
+  min-width: 100px;
+  align-items: center;
 }
 
-.site-layout-background {
-  background: rgb(241, 231, 231);
+.avatar{
+justify-content: center;
+display: flex;
+padding-bottom: 10px;
+padding-top: 10px;
 }
+
+.sidebarDisabled{
+  padding-top: 10P;
+  width: 0%;
+  align-items: center;
+}
+ 

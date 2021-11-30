@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useContext } from 'react';
 import { Layout, Menu, Input, Spin } from 'antd';
 import { Button } from '@material-ui/core'
@@ -13,84 +12,55 @@ import { generateUserRequest } from '../actions/generateUserRequest';
 
 
 
-
-
-
 export const Home = () => {
+
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />
   const [str, setStr] = useState(null)
-  const { SubMenu } = Menu;
-  const { Header, Content, Sider } = Layout;
-  let sideMenu = true
   const [flag, setFlag] = useState(1)
   const [userDetails, setUserDetails] = useContext(userDetailsContext);
   const [userArray, setUserArray] = useState([])
+  const [visible, setVisible] = useState("sideBar")
   let newUser;
 
   const generateUser = async () => {
+    setVisible("sidebarDisabled")
     newUser = await generateUserRequest(str);
+    let timer = setTimeout(setVisible("sideBar"), 1000)
     console.log("newUser", newUser)
     setUserArray(oldArray => [...oldArray, newUser])
-    console.log("userArray", userArray)
-
+    clearTimeout(timer)
   }
 
   useEffect(() => {
     if (sessionStorage.getItem("userArray"))
       setUserArray(JSON.parse(sessionStorage.getItem("userArray")))
   }, [])
-  
-   return (
-    <Layout>
-      <Header className="header">
+
+
+  return (
+
+    <div className="container">
+      <div className="header">
         <h1>Generated Contacts:{userArray.length}</h1>
-      </Header>
-      <Layout>
-        <Sider
-          style={{
-            overflow: 'auto',
-            height: '100vh',
-            width: 0,
-            position: 'fixed',
-            left: 0,
-          }}>
-          <Menu
-            mode="inline"
-            defaultSelectedKeys={['1']}
-            style={{ height: '100%', borderRight: 0 }}
-          >
+      </div>
+      <div className="mainContent">
+        <div className={visible}>
+          {visible == "sideBar" && <InputText setStr={setStr} setFlag={setFlag} />}
+          <div className="avatar">
 
-            <Menu.Item key="1">
-              <InputText setStr={setStr} setFlag={setFlag} />
-            </Menu.Item>
-
-            <Menu.Item key="2">{flag ? < Avatar shape="circle" visible="true" size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }}
-              src={str ? `https://avatars.dicebear.com/api/female/${str}.svg` : "/broken-image.jpg"} /> : <Spin indicator={antIcon} />} </Menu.Item>
-
-            <Menu.Item key="3"><Button color="primary" variant="contained" onClick={() => { generateUser() }}
-
-              disabled={flag == 0 || str == null || str == ""} >create user</Button>
-            </Menu.Item>
-          </Menu>
-        </Sider>
-        {/* <Layout style={{ padding: '0 24px 24px' }}> */}
-        <Content
-          className="site-layout-background"
-          style={{
-            padding: 24,
-            margin: 250,
-            minHeight: 280,
-            width: 250,
-
-          }}
-        >
-          {(!flag || str) && < DraftUser />}
+            {visible == "sideBar" && (flag ? < Avatar shape="circle" visible="true"
+              src={str ? `https://avatars.dicebear.com/api/female/${str}.svg` : "/broken-image.jpg"} /> : <Spin indicator={antIcon} />)}
+          </div>
+          {visible === "sideBar" && <Button color="primary" variant="contained" onClick={() => { generateUser() }}
+            disabled={flag == 0 || str == null || str == ""} >create user</Button>}
+        </div>
+        <div className="contacts">
+          <div className="draft">
+            {visible == "sideBar" && (!flag || str) && < DraftUser />}
+          </div>
           {userArray.length > 0 && <ListOfUser userArray={userArray} />}
-        </Content>
-        {/* </Layout> */}
-      </Layout>
-    </Layout>
+        </div>
+      </div>
+    </div>
   )
-
 }
-
