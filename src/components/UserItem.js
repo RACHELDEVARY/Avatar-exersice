@@ -27,7 +27,7 @@ export const UserItem = ({ contact }) => {
           </>
         }
       />
-      {openDelete && <DeleteUser email={email} firstName={firstName} lastName={lastName} userName={userName} />}
+      {openDelete && <DeleteUser email={email} firstName={firstName} lastName={lastName} userName={userName} setOpenDelete={setOpenDelete} />}
 
 
 

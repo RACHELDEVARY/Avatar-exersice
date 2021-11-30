@@ -9,13 +9,13 @@ import Avatar from '@material-ui/core/Avatar';
 import { useEffect, useState } from 'react';
 
 
-export const DeleteUser = ({ email, firstName, lastName, userName }) => {
+export const DeleteUser = ({ email, firstName, lastName, userName, setOpenDelete }) => {
   const [open, setOpen] = useState(true);
 
   const handleClose = () => {
-    console.log("alertclose")
     setOpen(false);
-    console.log("alertclosed")
+    setOpenDelete(false)
+
   };
 
   return (
